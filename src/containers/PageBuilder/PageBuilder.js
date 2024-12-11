@@ -1,8 +1,6 @@
 import React from 'react';
 
 import { IconSpinner, LayoutComposer } from '../../components/index.js';
-import TopbarContainer from '../../containers/TopbarContainer/TopbarContainer.js';
-import FooterContainer from '../FooterContainer/FooterContainer.js';
 
 import { validProps } from './Field';
 
@@ -10,6 +8,8 @@ import SectionBuilder from './SectionBuilder/SectionBuilder.js';
 import StaticPage from './StaticPage.js';
 
 import css from './PageBuilder.module.css';
+
+import Logo from '../../styles/icons/logo/colablogo.png';
 
 const getMetadata = (meta, schemaType, fieldOptions) => {
   const { pageTitle, pageDescription, socialSharing } = meta;
@@ -80,6 +80,11 @@ const LoadingSpinner = () => {
  * @param {Object} props
  * @returns page component
  */
+
+const A = () => {
+  return <h1>Hello</h1>;
+};
+
 const PageBuilder = props => {
   const {
     pageAssetsData,
@@ -100,6 +105,7 @@ const PageBuilder = props => {
   // - "meta" (which is data that goes inside <head>)
   const { sections = [], meta = {} } = pageAssetsData || {};
   const pageMetaProps = getMetadata(meta, schemaType, options?.fieldComponents);
+  const populars = ['popular1', 'popular2', 'popular3', 'popular4'];
 
   const layoutAreas = `
     topbar
@@ -110,21 +116,79 @@ const PageBuilder = props => {
     <StaticPage {...pageMetaProps} {...pageProps}>
       <LayoutComposer areas={layoutAreas} className={css.layout}>
         {props => {
-          const { Topbar, Main, Footer } = props;
           return (
-            <>
-              <Topbar as="header" className={css.topbar}>
-                <TopbarContainer />
-              </Topbar>
-              <Main as="main" className={css.main}>
-                {sections.length === 0 && inProgress ? (
-                  <LoadingSpinner />
-                ) : (
-                  <SectionBuilder sections={sections} options={options} />
-                )}
-              </Main>
-              <FooterContainer />
-            </>
+            <div className={css.container}>
+              <header className={css.header}>
+                <div className={css.wrapper}>
+                  <a href="/">
+                    <img src={Logo} alt="logo" sizes="100" />
+                  </a>
+                  <a href="/explore">Explore</a>
+                  <a href="/signup">List Up Profile</a>
+                </div>
+                <div className={css.wrapper} style={{ height: '100%' }}>
+                  <a href="/signup" className={css.button}>
+                    Sign Up
+                  </a>
+                  <a href="/login" className={css.button}>
+                    Login
+                  </a>
+                </div>
+              </header>
+
+              <main className={css.contents}>
+                <section className={css.banner}>
+                  <h1 className={css.bannerTitle}>
+                    We empower collaboration to turn ideas into reality.
+                  </h1>
+                  <div className={css.searchBarArea}>
+                    <input type="text" placeholder="Search" className={css.searchBar} />
+                    <button className={css.searchButton}>🔍</button>
+                  </div>
+                  <div className={css.circles}>
+                    <div className={css.circle1}></div>
+                    <div className={css.circle2}></div>
+                    <div className={css.circle3}></div>
+                    <div className={css.circle4}></div>
+                    <div className={css.circle5}></div>
+                  </div>
+                </section>
+
+                <ul className={css.carousels}>
+                  {populars.map((element, index) => (
+                    <li key={index} className={css.carouselContent}>
+                      {element}
+                    </li>
+                  ))}
+                </ul>
+
+                <section className={css.description}>
+                  <h1 className={css.heading}>
+                    Unite innovators to bring groundbreaking ideas to life.
+                  </h1>
+                  <p className={css.text}>
+                    At Colab, connect with like-minded creators to explore, build, and grow
+                    together. Join collaborative projects, contribute your unique skills, and shape
+                    a future where innovation thrives through teamwork. Start building your journey
+                    today!
+                  </p>
+                </section>
+
+                <section className={css.bentoContainer}>
+                  {[...Array(5)].map((_, index) => (
+                    <div key={index} className={`${css.card} ${css[`card${index + 1}`]}`}>
+                      <h3>Title</h3>
+                      <p>
+                        At Colab, connect with like-minded creators to explore, build, and grow
+                        together. Join collaborative projects, contribute your unique skills, and
+                        shape a future where innovation thrives through teamwork. Start building
+                        your journey today!
+                      </p>
+                    </div>
+                  ))}
+                </section>
+              </main>
+            </div>
           );
         }}
       </LayoutComposer>

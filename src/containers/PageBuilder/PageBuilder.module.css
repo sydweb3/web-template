@@ -1,22 +1,305 @@
-.layout {
-  min-height: 100vh;
-  grid-template-rows: auto 1fr auto;
-}
-
-.topbar {
-  position: sticky;
-  top: 0;
-  z-index: var(--zIndexTopbar);
-}
-
-.main {
-  display: grid;
-}
-
 .loading {
   width: 100%;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+* > h1 {
+  margin: 0;
+  padding: 0;
+}
+
+* > button {
+  border: none;
+  outline: none;
+}
+
+.container {
+  width: 100vw;
+  height: 2000px;
+  /* grid-template-rows: auto 1fr auto; */
+}
+
+.header {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 100px;
+  box-sizing: border-box;
+  border-bottom: 1px solid #d4d4d4;
+}
+
+.wrapper {
+  display: flex;
+  gap: 30px;
+}
+
+.button {
+  width: 100px;
+  height: 100%;
+  background-color: #6a42c2;
+  color: white;
+  transition: ease-in 0.2s;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button:hover {
+  background-color: #523696;
+}
+
+.contents {
+  width: 100%;
+  height: 100%;
+  padding: 40px 100px 300px;
+  box-sizing: border-box;
+}
+
+.banner {
+  width: 100%;
+  height: 500px;
+  border-radius: 4rem;
+  border: 3px solid black;
+  padding: 0 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 70px;
+  overflow: hidden;
+  position: relative;
+  background-color: #a77bff;
+}
+
+.bannerTitle {
+  text-align: center;
+  color: white;
+  font-size: 58px;
+  z-index: 1;
+}
+
+.searchBarArea {
+  width: 592px;
+  height: 60px;
+  background-color: white;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 10;
+}
+
+.searchBar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50px;
+  padding: 0 22px 0 40px;
+  transition: 0.3s ease-in-out;
+  border: 0.01px solid #5a32a2;
+}
+
+.searchBar:focus {
+  border: 3px solid #5a32a2;
+}
+
+.searchButton {
+  position: absolute;
+  right: 10px;
+  width: 40px;
+  height: 40px;
+  background-color: #a77bff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.circleBase {
+  position: absolute;
+  background-color: rgba(106, 66, 194, 0.2); /* 반투명 primary 색상 */
+  border-radius: 50%;
+}
+
+.circle1 {
+  composes: circleBase;
+  width: 400px;
+  height: 400px;
+  left: -144px;
+  top: 250px;
+}
+
+.circle2 {
+  composes: circleBase;
+  width: 200px;
+  height: 200px;
+  left: 106px;
+  top: -52px;
+}
+
+.circle3 {
+  composes: circleBase;
+  width: 200px;
+  height: 200px;
+  left: 446px;
+  top: 430px;
+}
+
+.circle4 {
+  composes: circleBase;
+  width: 400px;
+  height: 400px;
+  left: 602px;
+  top: -180px;
+}
+
+.circle5 {
+  composes: circleBase;
+  width: 400px;
+  height: 400px;
+  left: 877px;
+  top: 230px;
+}
+
+.carousels {
+  display: flex;
+  height: 160px;
+  gap: 15px;
+}
+
+.carouselContent {
+  width: 25%;
+  background-color: #d2d2d2;
+  border-radius: 25px;
+  border: 4px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.description {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.heading {
+  font-size: 48px;
+  text-align: center;
+  width: 80%;
+}
+
+.bentoContainer {
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 1rem;
+  height: 720px;
+  background-color: #f0f0f0;
+}
+
+.card {
+  border: 3px solid #000;
+  border-radius: 3rem;
+  overflow: hidden;
+  position: relative;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-50px);
+}
+
+.card h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.card p {
+  font-size: 1rem;
+}
+
+.arrow-icon {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.card1 {
+  background-color: rgb(0, 153, 94);
+  background-position: 0% 100%;
+  background-size: cover;
+}
+
+.card2 {
+  background-color: rgb(251, 125, 171);
+  background-position: 50% 100%;
+  background-size: cover;
+  grid-column: 2;
+  grid-row: span 2;
+}
+
+.card3 {
+  background-color: #058cd7;
+  background-position: 100% 100%;
+  background-size: 75% auto;
+}
+
+.card4 {
+  background-color: #fd5a46;
+  background-position: 100% 100%;
+  background-size: 60% auto;
+}
+
+.card5 {
+  background-color: #ffc107;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.box1 {
+  animation-delay: 0.2s;
+}
+
+.buidl {
+  animation-delay: 0.4s;
+}
+
+.bounty {
+  animation-delay: 0.6s;
+}
+
+.grants {
+  animation-delay: 0.8s;
+}
+
+.ideas {
+  animation-delay: 1s;
 }
